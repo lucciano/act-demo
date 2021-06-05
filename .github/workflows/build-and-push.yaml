@@ -1,14 +1,21 @@
 name: build-and-push
 
 on:
-  push:
-    branches:
-      - master
+  - push
+
 #  schedule:
     # See https://crontab.guru/@daily
 #    - cron: 5 4 * * *
 jobs:
-  pre-commit:
+  build-linux:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/setup-python@v2
+    strategy:
+      max-parallel: 5
+    pre-commit:
+      runs-on: ubuntu-latest
+      steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
