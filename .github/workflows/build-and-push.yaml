@@ -4,9 +4,9 @@ on:
   push:
     branches:
       - master
-  schedule:
+#  schedule:
     # See https://crontab.guru/@daily
-    - cron: 5 4 * * *
+#    - cron: 5 4 * * *
 jobs:
   pre-commit:
     runs-on: ubuntu-latest
