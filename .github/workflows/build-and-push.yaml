@@ -1,0 +1,14 @@
+name: build-and-push
+
+on:
+  push:
+    branches:
+      - master
+  schedule:
+    # See https://crontab.guru/@daily
+    - cron: 5 4 * * *
+jobs:
+  pre-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-python@v2
